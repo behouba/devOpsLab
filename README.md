@@ -37,7 +37,9 @@ Create and activate a virtual environement
 ```bash
 python3 -m venv env
 
-. ./env/bin/activate
+virtualenv venv
+
+. ./venv/bin/activate
 ```
 
 Install dependencies
