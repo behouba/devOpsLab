@@ -14,11 +14,12 @@ Flask is robust, solid, adaptable, scalable and user-friendly web framework.
 
 Flask's built-in server is not production ready according the the Official documentation.
 
-```
-While lightweight and easy to use, Flask’s built-in server is not suitable for production as it doesn’t scale well. Some of the options available for properly running Flask in production are documented here.
-```
 
- To be deployed in production they are several options available from the [official documentation](https://flask.palletsprojects.com/en/2.1.x/deploying/) of Flask.
+>While lightweight and easy to use, Flask’s built-in server is not suitable for production as it doesn’t scale well. Some of the options available for properly running Flask in production are documented  [here](https://flask.palletsprojects.com/en/2.1.x/deploying/).
+
+
+
+To be deployed in production they are several options available from the [official documentation](https://flask.palletsprojects.com/en/2.1.x/deploying/) of Flask.
 
 
 
@@ -37,7 +38,9 @@ Create and activate a virtual environement
 ```bash
 python3 -m venv env
 
+
 virtualenv venv
+
 
 . ./venv/bin/activate
 ```
