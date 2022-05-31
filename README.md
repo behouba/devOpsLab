@@ -64,3 +64,30 @@ python3 main.py
 pytest .
 ```
 
+## Docker
+
+Build the docker image locally
+
+```bash
+sudo docker build -t lab2 .
+```
+
+Scan the docker image to check for vunerabilities:
+
+```bash
+sudo docker scan lab2
+```
+
+Start a new container
+
+```bash
+docker run -d -p 5000:5000
+```
+
+The docker image is also available on DockerHub.
+
+```bash
+docker pull behouba/devops-labs:lab2
+
+docker run -d -p 5000:5000 behouba/devops-labs:lab2
+```
