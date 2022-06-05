@@ -2,7 +2,7 @@
 
 ## CI
 
-![example workflow](https://github.com/behouba/devOpsLab/actions/workflows/ci.yaml/badge.svg)
+![app python workflow](https://github.com/behouba/devOpsLab/actions/workflows/ci.yaml/badge.svg)
 
 ##  Requirements
 - Python 3.9+
