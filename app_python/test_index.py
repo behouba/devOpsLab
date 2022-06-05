@@ -1,25 +1,18 @@
-"""pytest is testing framework."""
+"""Index test."""
 import pytest
 
 from main import create_app, get_ru_time
 
-@pytest.fixture()
-def yield_app():
-    """Create new app instance for testing."""
-    app_i = create_app()
-
-    yield app_i
-
-
-@pytest.fixture()
-def client(app):
-    """Returns new client instance."""
-    return app.test_client()
+@pytest.fixture
+def client():
+    """App fixture."""
+    with create_app().test_client() as clt:
+        yield clt
 
 
-def test_index(clt):
+def test_index(client):
     """Test index (/) endpoint."""
-    response = clt.get("/")
+    response = client.get("/")
     time = get_ru_time()
     html = f'Moscow time: {time} (UTC+3)'
     assert response.status_code == 200
