@@ -3,8 +3,8 @@ import pytest
 
 from main import create_app, get_ru_time
 
-@pytest.fixture
-def client():
+@pytest.fixture(name="client")
+def fixture_client():
     """App fixture."""
     with create_app().test_client() as clt:
         yield clt
