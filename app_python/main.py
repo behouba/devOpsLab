@@ -21,11 +21,9 @@ def create_app():
         ru_time = get_ru_time()
 
         return render_template("index.html", time = ru_time)
-    
     return app
 
 
 
 if __name__ == '__main__':
-    app = create_app()
-    app.run()
+    create_app().run()

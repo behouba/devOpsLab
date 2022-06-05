@@ -4,11 +4,11 @@ import pytest
 from main import create_app, get_ru_time
 
 @pytest.fixture()
-def app():
+def yield_app():
     """Create new app instance for testing."""
-    app = create_app()
+    app_i = create_app()
 
-    yield app
+    yield app_i
 
 
 @pytest.fixture()
@@ -17,9 +17,9 @@ def client(app):
     return app.test_client()
 
 
-def test_index(client):
+def test_index(clt):
     """Test index (/) endpoint."""
-    response = client.get("/")
+    response = clt.get("/")
     time = get_ru_time()
     html = f'Moscow time: {time} (UTC+3)'
     assert response.status_code == 200
