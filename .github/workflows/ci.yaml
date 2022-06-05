@@ -32,7 +32,7 @@ jobs:
         pylint **/*.py
     - name: Test with pytest
       run: |
-        python3 -m unittest -v ${{ env.working_dir }}/test_*.py
+        pytest ${{ env.working_dir }}/test_*.py
 
   push:
     runs-on: ubuntu-latest
