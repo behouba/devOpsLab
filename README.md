@@ -1,6 +1,8 @@
 # IU DevOps Lab 1
 
+## CI
 
+![app python badge](https://github.com/behouba/devOpsLab/actions/workflows/ci.yml/badge.svg)
 
 ##  Requirements
 - Python 3.9+
