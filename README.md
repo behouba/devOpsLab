@@ -91,3 +91,11 @@ docker pull behouba/devops-labs:lab2
 
 docker run -d -p 5000:5000 behouba/devops-labs:lab2
 ```
+
+## Unit tests
+
+Run the unit tests with the following command:
+
+```bash
+$ python3 -m unittest -v 
+```

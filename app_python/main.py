@@ -16,7 +16,6 @@ def create_app():
 
         ru_time = get_ru_time()
 
-        print(ru_time)
         return render_template("index.html", time = ru_time)
     
     return app

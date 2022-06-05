@@ -1,0 +1,69 @@
+name: app python
+
+on:
+  push:
+    branches: [ master, lab3_submission ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test_lint:
+    runs-on: ubuntu-latest
+    env:
+      working_dir: app_python
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install flake8 pytest
+        if [ -f ${{ env.working_dir }}/requirements.txt ]; then pip install -r ${{ env.working_dir }}/requirements.txt; fi
+    - name: Lint with pylint
+      run: |
+        pylint **/*.py"
+    - name: Test with pytest
+      run: |
+        pytest ${{ env.working_dir }}/test_*.py
+
+  push:
+    runs-on: ubuntu-latest
+    env:
+      working_dir: app_python
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./${{ env.working_dir }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dev_ops_labs:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
