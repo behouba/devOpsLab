@@ -20,9 +20,9 @@ Reference: [Best practices for using Terraform](https://cloud.google.com/docs/te
 
 ## Vituralbox with 3 VMs 
 
-![Virtualbox](https://github.com/behouba/devOpsLab/blob/lab4/terraform/virtualbox.png)
+![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab4_submission/terraform/virtualbox.png)
 
 
 ## Terraform workspace with Github repository 
 
-![Virtualbox](https://github.com/behouba/devOpsLab/blob/lab4/terraform/virtualbox.png)
+![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab4_submission/terraform/terraform.png)
