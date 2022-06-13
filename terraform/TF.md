@@ -1,9 +1,13 @@
 # Lab 5 & 6
 
+## Screenshots from local console:
 ![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/terraform/dev/lab5.1.png)
 
 ![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/terraform/dev/lab5.2.png)
 
+
+## Screenshots from AWS console:
+ 
 ![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/terraform/dev/lab5.3.png)
 
 
