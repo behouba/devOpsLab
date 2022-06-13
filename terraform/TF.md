@@ -1,4 +1,15 @@
-# Terraform best pratices
+# Lab 5 & 6
+
+![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/terraform/dev/lab5.1.png)
+
+![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/terraform/dev/lab5.2.png)
+
+![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/terraform/dev/lab5.3.png)
+
+
+
+
+# Terraform best pratices (Lab 3 & 4)
 
 - Follow a standard module structure.
 - Adopt a naming convention.
