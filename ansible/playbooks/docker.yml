@@ -1,0 +1,6 @@
+- name: lab5
+  hosts: all
+  become: true
+
+  roles:
+    - role: ../roles/role-docker
