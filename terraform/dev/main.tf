@@ -1,7 +1,7 @@
 provider "aws" {
-  access_key = "AKIAWK6H6HD2I2VWZSZO"
-  secret_key = "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"
   region     = "us-east-1"
+  shared_config_files      = ["~/.aws/conf"]
+  shared_credentials_files = ["~/.aws/creds"]
 }
 
 
