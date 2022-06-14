@@ -1,0 +1,7 @@
+- name: lab6
+  hosts: all
+  become: yes
+  remote_user: ubuntu
+
+  roles:
+    - python_app
