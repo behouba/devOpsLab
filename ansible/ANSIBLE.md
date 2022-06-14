@@ -2,10 +2,10 @@
 
 Docker image ansible playbook deployement:
 
-![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/ansible/lab6.2.png)
+![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab6_submission/ansible/lab6.2.png)
 
 
-![Virtualbox](https://raw.githubusercontent.com/behouba/devOpsLab/lab5_submission/ansible/lab6.png)
+![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab6_submission/ansible/lab6.png)
 
 
 
