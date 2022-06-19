@@ -1,5 +1,6 @@
 # IU DevOps Lab 1
 
+This is a repository for DevOps elective course labs at Innopolis University. The project is a basic flask application which shows the current Moscow time and date.
 
 
 ##  Requirements
