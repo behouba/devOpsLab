@@ -1,6 +1,7 @@
 - name: lab5
   hosts: all
-  become: true
-
+  become: yes
+  remote_user: ubuntu
+  
   roles:
-    - role: ../roles/role-docker
+    - role: role-docker

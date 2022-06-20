@@ -47,8 +47,14 @@
 - name: Ensure handlers are notified now to avoid firewall conflicts.
   meta: flush_handlers
 
-- include_tasks: docker-compose.yml
-  when: docker_install_compose | bool
+- name: Install pip
+  package:
+    name: "python3-pip"
+    state: present
 
-- include_tasks: docker-users.yml
-  when: docker_users | length > 0
+- name: Install Docker-compose
+  become: true
+  pip:
+    name: "docker-compose"
+    state: present
+

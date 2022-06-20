@@ -1,6 +1,0 @@
----
-- name: pull python app docker image from docker-hub
-  command: docker pull behouba/devops-labs:lab2
-
-- name: start a new container with python_app docker image
-  command: docker run -d -p 5000:5000  behouba/devops-labs:lab2

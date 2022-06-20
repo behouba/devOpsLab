@@ -1,0 +1,45 @@
+version: "3"
+
+networks:
+  monitoring-network:
+
+services:
+  app_python:
+    container_name: monitoring.app_python
+    image: "behouba/devops-labs:lab2"
+    ports:
+      - "5000:5000"
+    networks:
+      - monitoring-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+        tag: "{{.ImageName}}|{{.Name}}"
+
+  loki:
+    container_name: monitoring.loki
+    image: "grafana/loki:2.5.0"
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - monitoring-network
+
+  promtail:
+    container_name: monitoring.promtail
+    image: "grafana/promtail:2.5.0"
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - monitoring-network
+
+  grafana:
+    container_name: monitoring.grafana
+    image: "grafana/grafana:latest"
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring-network

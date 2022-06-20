@@ -4,4 +4,4 @@
   remote_user: ubuntu
 
   roles:
-    - python_app
+    - role: app_python
