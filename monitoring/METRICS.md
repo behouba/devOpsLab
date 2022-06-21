@@ -1,4 +1,4 @@
-# Prometheus to obtain metrics from Loki and Prometheus containers
+# Metrics from Loki and Prometheus containers
 
 ![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab8_submission/monitoring/screenshots/lab8.1.png)
 
