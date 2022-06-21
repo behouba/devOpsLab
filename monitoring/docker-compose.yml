@@ -17,6 +17,7 @@ services:
         max-size: "100m"
         max-file: "10"
         tag: "{{.ImageName}}|{{.Name}}"
+    mem_limit: 300m
 
   loki:
     container_name: monitoring.loki
@@ -26,6 +27,12 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     networks:
       - monitoring-network
+    logging:
+        driver: "json-file"
+        options:
+          max-file: "5"
+          max-size: "100m"
+    mem_limit: 300m
 
   promtail:
     container_name: monitoring.promtail
@@ -35,6 +42,12 @@ services:
     command: -config.file=/etc/promtail/config.yml
     networks:
       - monitoring-network
+    logging:
+        driver: "json-file"
+        options:
+          max-file: "5"
+          max-size: "100m"
+    mem_limit: 300m
 
   grafana:
     container_name: monitoring.grafana
@@ -43,3 +56,34 @@ services:
       - "3000:3000"
     networks:
       - monitoring-network
+    logging:
+        driver: "json-file"
+        options:
+          max-file: "5"
+          max-size: "100m"
+    mem_limit: 300m
+
+
+  prometheus:
+    container_name: monitoring.prometheus
+    image: "prom/prometheus:v2.18.1"
+    volumes:
+      - /home/behouba/Desktop/devOpsLab/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    restart: unless-stopped
+    expose:
+      - 9090
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring-network
+    logging:
+        driver: "json-file"
+        options:
+          max-file: "5"
+          max-size: "100m"
+    mem_limit: 300m
