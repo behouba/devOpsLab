@@ -87,7 +87,7 @@ service/kubernetes                  ClusterIP      10.96.0.1        <none>      
 
 ## Screenshots
 
-![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab9_submission/k8s/images/lab10.1.png)
+![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab10_submission/k8s/images/lab10.1.png)
 
 
-![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab9_submission/k8s/images/lab10.2.png)
+![Screenshoot](https://raw.githubusercontent.com/behouba/devOpsLab/lab10_submission/k8s/images/lab10.2.png)
