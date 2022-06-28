@@ -30,3 +30,6 @@ htmlcov/
 
 #terraform
 .terraform
+
+# archives
+*.tgz
