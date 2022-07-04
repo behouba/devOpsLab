@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+replicaCount: 3
 
 image:
   repository: behouba/dev_ops_labs
@@ -80,3 +80,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+secrets:
+   name: app-python-name-secret
+   username: app-python-user
