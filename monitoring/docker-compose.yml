@@ -3,10 +3,16 @@ version: "3"
 networks:
   monitoring-network:
 
+volumes:
+  app_data:
+
+
 services:
   app_python:
     container_name: monitoring.app_python
-    image: "behouba/devops-labs:lab2"
+    image: "behouba/devops-labs:latest"
+    volumes:
+      - app_data:/app
     ports:
       - "5000:5000"
     networks:

@@ -25,6 +25,10 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "app-python.serviceAccountName" . }}
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "app-python.fullname" . }}-configmap
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -39,6 +43,10 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name }}
                   key: username
+          volumeMounts:
+            - name: config-volume
+              mountPath: /files/config.json
+              subPath: config.json
           ports:
             - name: http
               containerPort: 5000

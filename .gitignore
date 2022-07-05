@@ -33,3 +33,6 @@ htmlcov/
 
 # archives
 *.tgz
+
+# visits log file
+visits.txt

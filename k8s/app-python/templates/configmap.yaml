@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: {{ include "app-python.fullname" . }}-configmap
+    labels:
+      app: {{ include "app-python.fullname" . }}
+      chart: {{ include "app-python.chart" . }}
+data:
+  config.json:
+    '{{ .Files.Get "files/config.json"}}'

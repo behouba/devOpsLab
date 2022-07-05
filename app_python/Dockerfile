@@ -2,9 +2,6 @@
 
 FROM python:3.9-alpine
 
-# Create non root user
-RUN adduser --home /app --shell /bin/sh --uid 1000 --disabled-password dockeruser
-USER dockeruser
 
 # expose port
 EXPOSE 5000
@@ -13,6 +10,11 @@ EXPOSE 5000
 ENV FLASK_ENV=development FLASK_APP=main.py
 
 WORKDIR /app
+
+# Create non root user
+RUN adduser --disabled-password dockeruser && chown -R dockeruser /app
+USER dockeruser
+
 
 COPY requirements.txt requirements.txt
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-app="behouba/devops-labs:lab2"
+app="behouba/devops-labs:latest"
 
 # Build the image
 docker build -t ${app} .
