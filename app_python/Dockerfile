@@ -6,9 +6,7 @@ FROM python:3.8-slim-buster
 EXPOSE 5000
 
 # Set env variables for Flask
-ENV FLASK_ENV=development 
-
-ENV FLASK_APP=main.py
+ENV FLASK_ENV=development FLASK_APP=main.py
 
 WORKDIR /app
 
