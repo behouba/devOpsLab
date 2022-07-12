@@ -5,8 +5,8 @@
 replicaCount: 3
 
 image:
-  repository: behouba/dev_ops_labs
-  pullPolicy: IfNotPresent
+  repository: behouba/devops-labs
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -37,7 +37,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 5000
 
 ingress:
@@ -84,3 +84,9 @@ affinity: {}
 secrets:
    name: app-python-name-secret
    username: app-python-user
+
+podManagementPolicy: "Parallel"
+
+statefulSet:
+  name: visits
+  storageSize: 128M

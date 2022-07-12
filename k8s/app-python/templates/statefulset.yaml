@@ -1,10 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "app-python.fullname" . }}
   labels:
     {{- include "app-python.labels" . | nindent 4 }}
 spec:
+  serviceName: {{ include "app-python.fullname" . }}-service
+  podManagementPolicy: {{ .Values.podManagementPolicy }}
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
@@ -47,15 +49,19 @@ spec:
             - name: config-volume
               mountPath: /files/config.json
               subPath: config.json
+            - name: {{ .Values.statefulSet.name }}
+              mountPath: /app/
           ports:
             - name: http
               containerPort: 5000
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 100
             httpGet:
               path: /
               port: http
           readinessProbe:
+            initialDelaySeconds: 100
             httpGet:
               path: /
               port: http
@@ -73,3 +79,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ .Values.statefulSet.name }}
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: {{ .Values.statefulSet.storageSize }}
