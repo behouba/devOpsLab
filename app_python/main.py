@@ -5,7 +5,6 @@ import pytz
 
 from flask import Flask, render_template
 
-app = Flask(__name__)
 
 
 
@@ -15,29 +14,34 @@ def get_ru_time():
     return datetime.now(pytz.timezone("Europe/Moscow")).strftime("%H:%M:%S")
 
 
-visits_file = "visits.txt"
+def create_app():
+    "Initialize the app"
+    app = Flask(__name__)
+
+    visits_log = "visits.txt"
 
 
-open(visits_file, 'w+', encoding="utf-8")
+    open(visits_log, 'w+', encoding="utf-8")
+
+    @app.route('/')
+    def index():
+        "Website home page handler"
+        ru_time = get_ru_time()
+
+        with open(visits_log, 'a+', encoding="utf-8") as file:
+            file.write("/ visited at: " + ru_time + "\n")
+            file.close()
+        return render_template("index.html", time = ru_time)
 
 
-@app.route('/')
-def index():
-    ru_time = get_ru_time()
+    @app.route('/visits')
+    def visits():
+        "Website visits log output page handler"
+        with open(visits_log, 'r', encoding="utf-8") as file:
+            data = file.readlines()
+        return render_template("visits.html", visits_log = data)
 
-    with open(visits_file, 'a+', encoding="utf-8") as file:
-        file.write("/ visited at: " + ru_time + "\n")
-        file.close()
-    return render_template("index.html", time = ru_time)
+    return app
 
-
-@app.route('/visits')
-def visits():
-    with open(visits_file, 'r', encoding="utf-8") as file:
-        data = file.readlines()
-    return render_template("visits.html", visits_log = data)
-
-
-
-
-app.run(debug=True)
+if __name__ == '__main__':
+    create_app().run()
