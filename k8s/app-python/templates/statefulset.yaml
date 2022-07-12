@@ -31,6 +31,8 @@ spec:
         - name: config-volume
           configMap:
             name: {{ include "app-python.fullname" . }}-configmap
+        - name: workdir
+          emptyDir: { }
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -51,6 +53,8 @@ spec:
               subPath: config.json
             - name: {{ .Values.statefulSet.name }}
               mountPath: /app/
+            - name: workdir
+              mountPath: /workdir/
           ports:
             - name: http
               containerPort: 5000
@@ -79,6 +83,18 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+      - name: install
+        image: busybox
+        command:
+          - wget
+          - "-O"
+          - "/workdir/index.html"
+          - http://info.cern.ch
+        volumeMounts:
+          - name: workdir
+            mountPath: "/workdir"
+      dnsPolicy: Default
   volumeClaimTemplates:
   - metadata:
       name: {{ .Values.statefulSet.name }}
