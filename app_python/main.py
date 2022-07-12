@@ -21,7 +21,8 @@ def create_app():
     visits_log = "visits.txt"
 
 
-    open(visits_log, 'w+', encoding="utf-8")
+    with open(visits_log, 'w+', encoding="utf-8") as file:
+        file.close()
 
     @app.route('/')
     def index():
