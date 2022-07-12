@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: devops-labs
-        image: behouba/dev_ops_labs:latest
+        image: behouba/devops-labs
         ports:
         - containerPort: 5000

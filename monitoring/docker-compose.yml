@@ -12,7 +12,7 @@ services:
     container_name: monitoring.app_python
     image: "behouba/devops-labs:latest"
     volumes:
-      - app_data:/app
+      - app_data:/app/data
     ports:
       - "5000:5000"
     networks:
