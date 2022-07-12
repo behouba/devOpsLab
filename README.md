@@ -1,7 +1,10 @@
-# IU DevOps Lab 1
+# IU DevOps Lab
 
 This is a repository for DevOps elective course labs at Innopolis University. The project is a basic flask application which shows the current Moscow time and date.
 
+## CI
+
+![app python workflow](https://github.com/behouba/devOpsLab/actions/workflows/ci.yaml/badge.svg)
 
 ##  Requirements
 - Python 3.9+
@@ -91,4 +94,12 @@ The docker image is also available on DockerHub.
 docker pull behouba/devops-labs:lab2
 
 docker run -d -p 5000:5000 behouba/devops-labs:lab2
+```
+
+## Unit tests
+
+Run the unit tests with the following command:
+
+```bash
+$ python3 -m unittest -v 
 ```

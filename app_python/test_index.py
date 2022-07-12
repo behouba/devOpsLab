@@ -1,22 +1,19 @@
+"""Index test."""
 import pytest
-from datetime import datetime
+
 from main import create_app, get_ru_time
 
-@pytest.fixture()
-def app():
-    app = create_app()
-
-    yield app
-
-
-@pytest.fixture()
-def client(app):
-    return app.test_client()
+@pytest.fixture(name="client")
+def fixture_client():
+    """App fixture."""
+    with create_app().test_client() as clt:
+        yield clt
 
 
 def test_index(client):
+    """Test index (/) endpoint."""
     response = client.get("/")
     time = get_ru_time()
-    html = 'Moscow time: {} (UTC+3)'.format(time)
+    html = f'Moscow time: {time} (UTC+3)'
     assert response.status_code == 200
     assert html in str(response.data)

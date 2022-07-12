@@ -1,0 +1,16 @@
+# - name: killing previous container
+#   command: docker stop 8d2be9881f8c
+#   register: kill
+# - debug: msg="{{ kill.stdout }}"
+
+- name: Copy docker-Compose and promtail
+  copy:
+    src: /home/behouba/Desktop/devOpsLab/monitoring/
+    dest: tmp/
+
+- name: test docker-compose
+  docker_compose:
+    project_src: tmp/
+    state: present
+
+

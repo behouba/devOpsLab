@@ -23,3 +23,16 @@ htmlcov/
 .coverage
 .coverage.*
 *,cover
+
+
+# vagrant
+.vagrant
+
+#terraform
+.terraform
+
+# archives
+*.tgz
+
+# visits log file
+visits.txt
